@@ -24,10 +24,12 @@ Add retina_tag.js to your application.js file after including jquery
     //require retina_tag
 
 Add double pixel resolution images in your assets directory with the @2x modifier
+
     logo.png
     logo@2x.png
 
 Be sure to also specify the base dimensions in your image_tag calls
+
     <%=image_tag('logo.png',:height=>50)%>
 
 Awesome right?
