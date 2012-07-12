@@ -4,4 +4,4 @@ module RetinaTag
   # Your code goes here...
 end
 
-require "retina_tag/railtie"
+require "retina_tag/engine"
