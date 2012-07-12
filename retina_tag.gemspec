@@ -12,10 +12,10 @@ Gem::Specification.new do |gem|
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "retina_tag"
-  gem.require_paths = ["lib","vendor"]
+  gem.require_paths = ["lib"]
   gem.version       = RetinaTag::VERSION
 
   gem.add_dependency 'jquery-rails'
-  gem.add_dependency "railties", "~> 3.1"
+  gem.add_dependency "rails", "~> 3.1"
 
 end
