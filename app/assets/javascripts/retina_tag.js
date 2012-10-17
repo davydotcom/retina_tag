@@ -4,13 +4,6 @@ function highdpi_init() {
     var els = jQuery("img").get();
     for(var i = 0; i < els.length; i++) {
       var hiDpiSrc = $(els[i]).attr('hidpi_src');
-      var src = els[i].src;
-
-      if(hiDpiSrc)
-      {
-        src = hiDpiSrc;
-      }
-
 
       if(hiDpiSrc) {
         els[i].src = hiDpiSrc;

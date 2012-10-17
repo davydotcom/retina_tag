@@ -12,7 +12,6 @@ module ActionView
             asset_path(retina_path)
           end
         rescue
-          puts " WOAH"
           nil
         end
       end
