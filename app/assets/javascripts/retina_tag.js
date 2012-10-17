@@ -1,7 +1,6 @@
 function highdpi_init() {
   if(window.devicePixelRatio > 1)
   {
-
     var els = jQuery("img").get();
     for(var i = 0; i < els.length; i++) {
       var hiDpiSrc = $(els[i]).attr('hidpi_src');
@@ -22,9 +21,6 @@ function highdpi_init() {
       if(hiDpiSrc) {
         els[i].src = hiDpiSrc;
       }
-
-
-
     }
   }
 }

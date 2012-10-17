@@ -8,25 +8,21 @@ module ActionView
           retina_els.slice!(-1)
           retina_path = "#{retina_els.join('.')}@2x.#{extension}"
 
-          return nil if Rails.application.assets.find_asset(retina_path).nil?
-          asset_path = asset_path(retina_path)
-          return asset_path
+          if !Rails.application.assets.find_asset(retina_path).nil?
+            asset_path(retina_path)
+          end
         rescue
           puts " WOAH"
-          return nil
+          nil
         end
       end
+
       def image_tag_with_retina(source,options={})
-
-        options_default = {:hidpi_src=>hidpi_asset_path(source)}
-
-        return image_tag_without_retina(source,options_default.merge(options))
+        options_default = { :hidpi_src => hidpi_asset_path(source) }
+        image_tag_without_retina(source,options_default.merge(options))
       end
 
-
-
       alias_method_chain :image_tag, :retina
-
     end
   end
 end
