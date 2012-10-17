@@ -11,13 +11,7 @@ function highdpi_init() {
       {
         src = hiDpiSrc;
       }
-      else
-      {
-        var path_segments = src.split('.');
-        var path_without_extension = path_segments.slice(0, (path_segments.length - 1)).join(".");
-        var extension = path_segments[path_segments.length - 1];
-        src = path_without_extension + "@2x." + extension;
-      }
+
 
       if(hiDpiSrc) {
         els[i].src = hiDpiSrc;
