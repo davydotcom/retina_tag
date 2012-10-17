@@ -1,6 +1,9 @@
 # RetinaTag
 
-Interested in making your web-sites retina compatible? Rails asset pipeline makes this a pain with retina image_tags, especially when precompiling assets. RetinaTag resolves this by extending image_tag to create a hidpi_src attribute with the retina image path if it exists.
+Interested in making your web-sites retina compatible? Rails asset pipeline
+makes this a pain with retina `image_tag`s, especially when precompiling assets.
+RetinaTag resolves this by extending `image_tag` to create a `hidpi_src`
+attribute with the retina image path if it exists.
 
 ## Installation
 
@@ -19,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-Add retina_tag.js to your application.js file after including jquery
+Add `retina_tag.js` to your application.js file after including jQuery:
 
     //require retina_tag
 
@@ -28,7 +31,7 @@ Add double pixel resolution images in your assets directory with the @2x modifie
     logo.png
     logo@2x.png
 
-Be sure to also specify the base dimensions in your image_tag calls
+Be sure to also specify the base dimensions in your `image_tag` calls:
 
     <%=image_tag('logo.png',:height=>50)%>
 
