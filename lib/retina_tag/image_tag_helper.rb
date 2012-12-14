@@ -18,6 +18,13 @@ module ActionView
 
       def image_tag_with_retina(source,options={})
         options_default = { :hidpi_src => hidpi_asset_path(source) }
+
+        if options[:lazy]
+          options.delete(:lazy)
+          options["data-lazy-load"] = "1x"
+          options[:lowdpi_src] = source
+          source = ''
+        end
         image_tag_without_retina(source,options_default.merge(options))
       end
 
