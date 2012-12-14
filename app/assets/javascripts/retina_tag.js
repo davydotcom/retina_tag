@@ -33,7 +33,7 @@ RetinaTag.refreshImage = function(image) {
     }
 
   }
-  else if(window.devicePixelRatio <= 1 && imageSrc == hiDpiSrc) {
+  else if(window.devicePixelRatio <= 1 && (imageSrc == hiDpiSrc || (lowDpiSrc && imageSrc != lowDpiSrc))) {
     if(lazyLoad) {
       lazyLoad.setAttribute('data-lazy-load','1x');
     }
