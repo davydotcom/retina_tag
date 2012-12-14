@@ -15,6 +15,5 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = RetinaTag::VERSION
 
-  gem.add_dependency 'jquery-rails'
   gem.add_dependency "rails", "~> 3.1"
 end
