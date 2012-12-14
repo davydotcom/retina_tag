@@ -37,6 +37,11 @@ Be sure to also specify the base dimensions in your `image_tag` calls:
 
 Awesome right?
 
+## Lazy Loading Images (EXPIREMENTAL)
+if you set `:lazy => true` on an image_tag, the src attribute is moved to a lodpi_src attribute. A seperate attribuet `data-lazy-load` is live updated with the devicePixelRatio state, and the src attribute is not automatically updated.
+When you are ready to load the image, you can simply remove the image elements `data-lazy-load` attribute, and retina_tag will automatically insert the src attribute properly.
+
+
 ## Contributing
 
 1. Fork it
