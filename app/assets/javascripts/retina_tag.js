@@ -1,7 +1,6 @@
 var RetinaTag = RetinaTag || {};
 
 RetinaTag.init = function() {
-  RetinaTag.updateImages();
   window.matchMedia('(-webkit-device-pixel-ratio:1)').addListener(RetinaTag.updateImages);
   document.addEventListener("page:load", RetinaTag.updateImages);
   document.addEventListener("retina_tag:refresh", RetinaTag.updateImages);
@@ -10,7 +9,9 @@ RetinaTag.init = function() {
 RetinaTag.updateImages = function() {
   var images = document.getElementsByTagName('img');
   for(var counter=0; counter < images.length; counter++) {
-    RetinaTag.refreshImage(images[counter]);
+    if(!images[counter].getAttribute('data-lazy-load')) {
+      RetinaTag.refreshImage(images[counter]);
+    }
   }
 };
 
@@ -22,27 +23,20 @@ RetinaTag.refreshImage = function(image) {
   if(!hiDpiSrc) {
     return;
   }
-
+  if(lazyLoad)
+  {
+    image.removeAttribute('data-lazy-load');
+  }
   if(window.devicePixelRatio > 1 && imageSrc != hiDpiSrc) {
     if(!lowDpiSrc) {
       image.setAttribute('lowdpi_src',imageSrc);
     }
-    if(lazyLoad) {
-      image.setAttribute('data-lazy-load','2x');
-    }
-    else {
-      image.src = hiDpiSrc;
-    }
-
+    image.src = hiDpiSrc;
   }
   else if(window.devicePixelRatio <= 1 && (imageSrc == hiDpiSrc || (lowDpiSrc && imageSrc != lowDpiSrc))) {
-    if(lazyLoad) {
-      image.setAttribute('data-lazy-load','1x');
-    }
-    else {
-      image.src = lowDpiSrc;
-    }
+    image.src = lowDpiSrc;
   }
 };
 
-$(document).ready(RetinaTag.init);
+RetinaTag.init();
+$(document).ready(RetinaTag.updateImages);
