@@ -37,15 +37,15 @@ Be sure to also specify the base dimensions in your `image_tag` calls:
 
 Awesome right?
 
-## Forcing Refresh after loading dynamic content
+### Forcing Refresh after loading dynamic content
 Retina tag listens to the global event on document called `retina_tag:refresh`. Firing this event will force retina_tag to rescan the dom for images and update their image src if necessary. Useful if loading content dynamically. **Note:** retina_tag automatically supports turbolinks.
 
-## Override Hidpi src attribute
+### Override Hidpi src attribute
 In some cases it becomes necessary to override the hidpi_src attribute and skip asset pipeline. A good example of this might be to load a users profile picture which is stored elsewhere.
 
     <%=image_tag(user.photo.url(:medium), "hidpi_src" => user.photo.url(:medium_2x), :height=>75, :width => 75%>
 
-## Lazy Loading Images
+### Lazy Loading Images
 If you set `:lazy => true` on an image_tag, the src attribute is moved to a lodpi_src attribute. You will need to manually instruct the image to load. To do this use `RetinaTag.refreshImage(img)` where img is the image element.
 
 
