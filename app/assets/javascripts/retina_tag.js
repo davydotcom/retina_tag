@@ -7,7 +7,6 @@ RetinaTag.init = function() {
 };
 
 RetinaTag.updateImages = function() {
-  console.log("UPDATING IMAGES!");
   var images = document.getElementsByTagName('img');
   for(var counter=0; counter < images.length; counter++) {
     if(!images[counter].getAttribute('data-lazy-load')) {
@@ -32,14 +31,10 @@ RetinaTag.refreshImage = function(image) {
     if(!lowDpiSrc) {
       image.setAttribute('lowdpi_src',imageSrc);
     }
-    console.log("Setting Source!");
     image.src = hiDpiSrc;
   }
   else if((!window.devicePixelRatio || window.devicePixelRatio <= 1) && (imageSrc == hiDpiSrc || (lowDpiSrc && imageSrc != lowDpiSrc))) {
-    console.log("Setting low src");
     image.src = lowDpiSrc;
-  } else {
-    console.log("WHOOPS!");
   }
 };
 
