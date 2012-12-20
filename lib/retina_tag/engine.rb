@@ -8,7 +8,7 @@ module RetinaTag
     def image_tag_with_retina(source,options={})
       hidpi_asset_path = nil
       begin
-          retina_els = path.split('.')
+          retina_els = source.split('.')
           extension = retina_els.last
           retina_els.slice!(-1)
           retina_path = "#{retina_els.join('.')}@2x.#{extension}"
