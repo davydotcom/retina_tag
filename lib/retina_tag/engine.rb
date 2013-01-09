@@ -29,11 +29,9 @@ module RetinaTag
       image_tag_without_retina(source,options_default)
 
       if options_default[:"data-lazy-load"]
-        puts "Lazy load detected"
         options_default[:lowdpi_src] = options_default.delete(:src)
       end
-      puts "Using custom image Tag!"
-      puts options_default
+
       tag("img", options_default)
     end
 
