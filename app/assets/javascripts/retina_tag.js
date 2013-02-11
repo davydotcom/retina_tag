@@ -37,6 +37,9 @@ RetinaTag.refreshImage = function(image) {
     image.src = lowDpiSrc;
   }
 };
+if(window.devicePixelRatio !== undefined) {
+  RetinaTag.init();
+  $(document).ready(RetinaTag.updateImages);
+}
 
-RetinaTag.init();
-$(document).ready(RetinaTag.updateImages);
+
