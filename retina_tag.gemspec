@@ -7,7 +7,7 @@ Gem::Specification.new do |gem|
   gem.description   = "This gem overrides image_tag to support retina resolution images using asset pipeline"
   gem.summary       = "image_tag addon for retina graphics, with cache support."
   gem.homepage      = "http://github.com/davydotcom/retina_tag"
-
+  gem.license = 'MIT'
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
