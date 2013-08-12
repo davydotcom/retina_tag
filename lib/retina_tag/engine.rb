@@ -16,7 +16,6 @@ module RetinaTag
           retina_path = "#{retina_els.join('.')}@2x.#{extension}"
 
           if !Rails.application.assets.find_asset(retina_path).nil?
-            puts "Found HIDPI Asset"
             hidpi_asset_path = asset_path(retina_path)
           end
       rescue
@@ -28,7 +27,6 @@ module RetinaTag
       end
 
       options_default.merge!(options)
-      puts "Checking for #{source} #{options_default}"
       image_tag_without_retina(source,options_default)
 
       if options_default[:"data-lazy-load"]
