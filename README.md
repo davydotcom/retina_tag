@@ -24,7 +24,7 @@ Or install it yourself as:
 
 Add `retina_tag.js` to your application.js file after including jQuery:
 
-    //require retina_tag
+    //= require retina_tag
 
 Add double pixel resolution images in your assets directory with the @2x modifier
 
