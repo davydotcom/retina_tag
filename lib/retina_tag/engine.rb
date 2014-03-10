@@ -20,7 +20,7 @@ module RetinaTag
           end
       rescue
       end
-      options_default = { :hidpi_src => hidpi_asset_path }
+      options_default = { "data-hidpi-src" => hidpi_asset_path }
 
       if lazy = options.delete(:lazy)
         options["data-lazy-load"] = lazy
@@ -30,7 +30,7 @@ module RetinaTag
       image_tag_without_retina(source,options_default)
 
       if options_default[:"data-lazy-load"]
-        options_default[:lowdpi_src] = options_default.delete(:src)
+        options_default["data-lowdpi-src"] = options_default.delete(:src)
       end
 
       tag("img", options_default)

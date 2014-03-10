@@ -18,8 +18,8 @@ RetinaTag.updateImages = function() {
 RetinaTag.refreshImage = function(image) {
   var lazyLoad  = image.getAttribute('data-lazy-load');
   var imageSrc  = image.src;
-  var hiDpiSrc  = image.getAttribute('hidpi_src');
-  var lowDpiSrc = image.getAttribute('lowdpi_src');
+  var hiDpiSrc  = image.getAttribute('data-hidpi-src');
+  var lowDpiSrc = image.getAttribute('data-lowdpi-src');
   if(!hiDpiSrc) {
     return;
   }
@@ -29,7 +29,7 @@ RetinaTag.refreshImage = function(image) {
   }
   if(window.devicePixelRatio > 1 && imageSrc != hiDpiSrc) {
     if(!lowDpiSrc) {
-      image.setAttribute('lowdpi_src',imageSrc);
+      image.setAttribute('data-lowdpi-src',imageSrc);
     }
     image.src = hiDpiSrc;
   }
