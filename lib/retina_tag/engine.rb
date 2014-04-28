@@ -27,13 +27,12 @@ module RetinaTag
       end
 
       options_default.merge!(options)
-      image_tag_without_retina(source,options_default)
 
       if options_default[:"data-lazy-load"]
         options_default["data-lowdpi-src"] = options_default.delete(:src)
       end
 
-      tag("img", options_default)
+      image_tag_without_retina(source, options_default)
     end
 
 
