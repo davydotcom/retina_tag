@@ -15,7 +15,7 @@ module RetinaTag
           retina_els.slice!(-1)
           retina_path = "#{retina_els.join('.')}@2x.#{extension}"
 
-          if !Rails.application.assets.find_asset(retina_path).nil?
+          if retina_asset_present?(retina_path)
             hidpi_asset_path = asset_path(retina_path)
           end
       rescue
@@ -35,6 +35,15 @@ module RetinaTag
       image_tag_without_retina(source, options_default)
     end
 
+    def retina_asset_present?(path)
+      if Rails.application.assets.present?
+        Rails.application.assets.find_asset(path).present?
+      else
+        Rails.application.assets_manifest.files.values.any? do |asset|
+          asset["logical_path"] == path
+        end
+      end
+    end
 
   end
 
