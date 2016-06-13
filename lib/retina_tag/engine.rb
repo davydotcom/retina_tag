@@ -10,14 +10,20 @@ module RetinaTag
       src = options[:src] = path_to_image(source)
 
       begin
-          retina_els = source.split('.')
-          extension = retina_els.last
-          retina_els.slice!(-1)
-          retina_path = "#{retina_els.join('.')}@2x.#{extension}"
+        retina_els = source.split('.')
+        extension = retina_els.last
+        retina_els.slice!(-1)
+        retina_path = "#{retina_els.join('.')}@2x.#{extension}"
 
-          if !Rails.application.assets.find_asset(retina_path).nil?
-            hidpi_asset_path = asset_path(retina_path)
-          end
+        retina_asset_present = if Rails.application.assets.present?
+          Rails.application.assets.find_asset(retina_path).present?
+        else
+          Rails.application.assets_manifest.files.values.any? { |asset| asset["logical_path"] == retina_path }
+        end
+
+        if retina_asset_present
+          hidpi_asset_path = asset_path(retina_path)
+        end
       rescue
       end
       options_default = { "data-hidpi-src" => hidpi_asset_path }
@@ -34,7 +40,6 @@ module RetinaTag
 
       image_tag_without_retina(source, options_default)
     end
-
 
   end
 
