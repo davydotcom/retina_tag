@@ -2,7 +2,10 @@
 module RetinaTag
   module TagHelper
     def self.included(base)
-      base.alias_method_chain :image_tag, :retina
+      base.module_eval do
+        alias_method :image_tag_without_retina, :image_tag
+        alias_method :image_tag, :image_tag_with_retina
+      end
     end
 
     def image_tag_with_retina(source,options={})
