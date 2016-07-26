@@ -19,6 +19,7 @@ Or install it yourself as:
 
     $ gem install retina_tag
 
+_NOTE_: Jquery is required to be in the runtime.
 
 ## Usage
 

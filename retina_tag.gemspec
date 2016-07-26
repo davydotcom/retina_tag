@@ -16,5 +16,5 @@ Gem::Specification.new do |gem|
   gem.version       = RetinaTag::VERSION
 
   gem.add_dependency "rails", ">= 3.1"
-  gem.add_dependency "jquery-rails"
+  gem.add_development_dependency "jquery-rails"
 end
