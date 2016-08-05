@@ -3,6 +3,7 @@ var RetinaTag = RetinaTag || {};
 RetinaTag.init = function() {
   window.matchMedia('(-webkit-device-pixel-ratio:1)').addListener(RetinaTag.updateImages);
   document.addEventListener("page:load", RetinaTag.updateImages);
+  document.addEventListener("turbolinks:load", RetinaTag.updateImages);
   document.addEventListener("retina_tag:refresh", RetinaTag.updateImages);
 };
 
